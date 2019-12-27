@@ -1,0 +1,23 @@
+# Project exclude paths
+/authorityCenter/target/
+/mongoServer/target/
+/util/target/
+.DS_Store
+.idea/.gitignore
+.idea/codeStyles/
+.idea/compiler.xml
+.idea/dictionaries/
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+authorityCenter/pom.xml
+authorityCenter/src/
+log/
+mongoServer/pom.xml
+mongoServer/src/
+pom.xml
+util/pom.xml
+util/src/
+xDataServer.iml

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dbMysql" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="closeConnectionPool">
+        <property name="url" value="jdbc:mysql://10.161.67.82:3306/autopm?useSSL=false&amp;characterEncoding=utf-8"/>
+        <property name="username" value="deploy"/>
+        <property name="password" value="Sasi11A!#asd$"/>
+        <property name="maxTotal" value="5"/>
+    </bean>
+
+    <bean id="dataSource" class="cn.chinaunicom.util.DynamicDataSource" primary="true">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="dbMysql" value-ref="dbMysql"/>
+                <entry key="jhQOra" value-ref="jhQOra"/>
+            </map>
+        </property>
+    </bean>
+    <!--oracle 统计工单-->
+    <bean id="jhQOra" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="closeConnectionPool">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+       <property name="url" value="jdbc:oracle:thin:@10.161.32.100:20302:btorcl"/>
+        <property name="username" value="uqry_1"/>
+        <property name="password" value="UQRY_1"/>
+        <property name="maxTotal" value="5"/>
+    </bean>
+</beans>

@@ -1,0 +1,43 @@
+{
+  "configuration": {
+    "name": "log4j2 配置文件",
+    "ThresholdFilter": {
+      "level": "debug"
+    },
+    "appenders": {
+      "Console": {
+        "name": "STDOUT",
+        "PatternLayout": {
+          "pattern": "%d [%t] %-5p %c - %m%n"
+        }
+      },
+      "rollingFile": {
+        "name": "File",
+        "fileName": "./log/log",
+        "filePattern": "./log%d{yy-MM-dd}/%d{yy-MM-dd-HH-mm-ss}-%i.log.gz",
+        "PatternLayout": {
+          "pattern": "%d [%t] %-5p %c - %m%n"
+        },
+        "Policies": {
+          "SizeBasedTriggeringPolicy": {
+            "size":"2 MB"
+          }
+        },
+        "DefaultRolloverStrategy": {
+          "max":"10"
+        }
+      }
+    },
+    "loggers": {
+      "root": {
+        "level": "trace",
+        "AppenderRef": {
+          "ref": "STDOUT"
+        },
+        "appender-ref": {
+          "ref":"File"
+        }
+      }
+    }
+  }
+}
